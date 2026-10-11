@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const sortedProjects = allProjects.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="CV & Projects | Kevin Williams">
+  <section>
+    <h1 style="font-size: 2rem; margin-bottom: 0.5rem;">CV & Projects</h1>
+    <p style="color: #666; margin-bottom: 2rem;">A summary of my background, technical stack, and recent work.</p>
+
+    <h2 style="font-size: 1.5rem; margin-top: 2rem; border-bottom: 2px solid #0066cc; padding-bottom: 0.3rem;">Featured Projects</h2>
+    
+    {
+      sortedProjects.map(async (project) => {
+        const { Content } = await render(project);
+        return (
+          <div style="margin: 1.5rem 0;">
+            <h3 style="margin-bottom: 0.2rem;">{project.data.title}</h3>
+            <h4>{project.data.date}</h4>
+            <p style="font-size: 0.9rem; color: #666; margin-top: 0;">Tech: {project.data.tech.join(', ')}</p>
+            <div style="color: #333; margin-top: 0.5rem;">
+              <Content />
+            </div>
+          </div>
+        );
+      })
+    }
+  </section>
+</BaseLayout>

@@ -1,16 +1,16 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Kevin Williams | Independent Software Developer">
+  <section style="padding: 1.5rem 0;">
+    <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Building Robust Software & AI Systems</h1>
+    <p style="font-size: 1.25rem; color: #555; margin-bottom: 2rem;">
+      Hi, I'm an independent software developer specializing in full-stack architecture, high-performance web applications, and practical AI integrations.
+    </p>
+    <div style="display: flex; gap: 1rem;">
+      <a href="/cv" style="background: #0066cc; color: white; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: 500;">View CV & Projects</a>
+      <a href="/contact" style="border: 1px solid #0066cc; color: #0066cc; padding: 0.75rem 1.5rem; border-radius: 4px; text-decoration: none; font-weight: 500;">Get in Touch</a>
+    </div>
+  </section>
+</BaseLayout>
