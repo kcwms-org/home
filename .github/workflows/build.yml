@@ -1,9 +1,10 @@
-name: Build Astro Project
+name: Build and Package
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,11 +17,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22.12
+          node-version: '22.12'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Astro project
+      - name: Build project
         run: npm run build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
