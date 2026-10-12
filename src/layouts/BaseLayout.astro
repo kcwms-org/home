@@ -1,0 +1,37 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title , description = "Independent Software Developer Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body style="font-family: system-ui, -apple-system, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; line-height: 1.6; color: #333;">
+    <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; border-bottom: 1px solid #eaeaea; padding-bottom: 1rem;">
+      <strong><a href="/" style="text-decoration: none; color: inherit; font-size: 1.1rem;">Kevin Williams</a></strong>
+      <nav style="display: flex; gap: 1.5rem;">
+        <a href="/" style="text-decoration: none; color: #0066cc;">Home</a>
+        <a href="/cv" style="text-decoration: none; color: #0066cc;">CV & Projects</a>
+        <a href="/contact" style="text-decoration: none; color: #0066cc;">Contact</a>
+      </nav>
+    </header>
+    
+    <main>
+      <slot />
+    </main>
+
+    <footer style="margin-top: 4rem; border-top: 1px solid #eaeaea; padding-top: 1rem; font-size: 0.9rem; color: #666; display: flex; justify-content: space-between;">
+      <p>© {new Date().getFullYear()} Kevin Williams</p>
+    </footer>
+  </body>
+</html>
